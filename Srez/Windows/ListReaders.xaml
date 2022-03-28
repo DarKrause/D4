@@ -1,0 +1,50 @@
+﻿<Window x:Class="Srez.Windows.ListReaders"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Srez.Windows"
+        mc:Ignorable="d"
+        Title="Список читателей" Height="450" Width="800" MinHeight="450" MinWidth="800" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen" Icon="/Images/logo_vis222.png">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="69*"/>
+            <RowDefinition Height="283*"/>
+            <RowDefinition Height="82*"/>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left" Width="200">
+            <Label>Поиск по читателю</Label>
+            <TextBox Background="AliceBlue" x:Name="TbReaders" TextChanged="TbReaders_TextChanged" Width="200"></TextBox>
+        </StackPanel>
+        <StackPanel  Orientation="Horizontal" HorizontalAlignment="Right"  Width="60">
+            <Image ToolTip="Читательский билет" x:Name="ImgBilet" MouseLeftButtonDown="ImgBilet_MouseLeftButtonDown" Width="30" Source="/Images/img_570846.png"></Image>
+            <Image Width="30" Source="/Images/img_20646.png"></Image>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Left" Grid.Row="2"  Width="30">
+            <Image Source="/Images/tlb-logout-1.png" Width="30"></Image>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" Grid.Row="2">
+            <Image Source="/Images/logo_vis222.png" Width="150"></Image>
+        </StackPanel>
+        <ListView Background="AliceBlue" Grid.Row="1" x:Name="LvReaders">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Border Width="100" Height="100" CornerRadius="200">
+                            <Border.Background>
+                                <ImageBrush ImageSource="{Binding Photo}"></ImageBrush>
+                            </Border.Background>
+                        </Border>
+                        <TextBlock FontSize="20" TextAlignment="Center" Text="{Binding fio}"/>
+                        <TextBlock FontSize="20" TextAlignment="Center" Text="{}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="650"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+    </Grid>
+</Window>
